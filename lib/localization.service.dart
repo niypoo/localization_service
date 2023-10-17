@@ -10,6 +10,8 @@ class LocalizationService extends GetxService {
   // Languages
   final List<Language>? languages;
 
+  final RxBool changes = RxBool(false);
+
   // constructors
   LocalizationService({this.languages});
 
@@ -58,6 +60,9 @@ class LocalizationService extends GetxService {
 
     // this delay fix card and some element have not localization changes
     await Future.delayed(const Duration(milliseconds: 300));
+
+    // listener
+    changes.value = !changes.value;
 
     // force app update
     Get.forceAppUpdate();
