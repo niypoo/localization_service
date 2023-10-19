@@ -48,8 +48,8 @@ class LocalizationService extends GetxService {
         defaultLanguage;
   }
 
-  bool get isRTLDirection {
-    return (selectedLanguage.value?.dir == 'rtl');
+  bool get isRTL {
+    return (language.dir == 'rtl');
   }
 
   Future<void> appChangeLocale(String languageKey) async {
