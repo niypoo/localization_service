@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:local_storage_service/localStorage.service.dart';
+import 'package:localization_service/abstracts/localizationHandler.abstract.dart';
 import 'package:localization_service/models/language.model.dart';
 
 class LocalizationService extends GetxService {
@@ -16,15 +17,21 @@ class LocalizationService extends GetxService {
   // current language
   final Rx<Language?> selectedLanguage = Rx(null);
 
+  final LocalizationHandler localizationHandler;
+
   // constructors
   LocalizationService({
     required this.supportedLanguages,
     required this.defaultLanguage,
+    required this.localizationHandler,
   });
 
   // initialization
   Future<LocalizationService> init() async {
-    _setDefaultLAnguage();
+    // get default
+    _setDefaultLanguage();
+    // trigger outsource init
+    localizationHandler.init(language);
     return this;
   }
 
@@ -32,7 +39,7 @@ class LocalizationService extends GetxService {
   Language get language => selectedLanguage.value ?? defaultLanguage;
 
   // return stored locale or device locale
-  _setDefaultLAnguage() {
+  void _setDefaultLanguage() {
     // read stored language if exist before
     final String selectedLocale =
         LocaleStorageService.to.instance.read('selectedLocale') ??
@@ -65,6 +72,9 @@ class LocalizationService extends GetxService {
     // update locale of app
     Get.updateLocale(Locale(languageKey));
 
+    // handler trigger outsource
+    localizationHandler.update(language);
+
     // this delay fix card and some element have not localization changes
     await Future.delayed(const Duration(milliseconds: 300));
 
@@ -73,13 +83,11 @@ class LocalizationService extends GetxService {
   }
 }
 
+// List<String> supportedStringLocales() {
+//   return supportedLanguages.map((language) => language.code).toList();
+// }
 
- 
-  // List<String> supportedStringLocales() {
-  //   return supportedLanguages.map((language) => language.code).toList();
-  // }
-
-  // Language get getCurrentLanguage {
-  //   return supportedLanguages!.firstWhere(
-  //       (language) => language.code == getCurrentLocale!.languageCode);
-  // }
+// Language get getCurrentLanguage {
+//   return supportedLanguages!.firstWhere(
+//       (language) => language.code == getCurrentLocale!.languageCode);
+// }
