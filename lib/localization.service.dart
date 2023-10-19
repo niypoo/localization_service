@@ -52,6 +52,9 @@ class LocalizationService extends GetxService {
     return (language.dir == 'rtl');
   }
 
+  List<Locale> get supportedLocales =>
+      supportedLanguages.map((language) => Locale(language.code)).toList();
+
   Future<void> appChangeLocale(String languageKey) async {
     // store new language
     LocaleStorageService.to.instance.write('selectedLocale', languageKey);
@@ -71,9 +74,7 @@ class LocalizationService extends GetxService {
 }
 
 
-  // List<Locale> get supportedLocales =>
-  //     supportedLanguages.map((language) => Locale(language.code)).toList();
-
+ 
   // List<String> supportedStringLocales() {
   //   return supportedLanguages.map((language) => language.code).toList();
   // }
