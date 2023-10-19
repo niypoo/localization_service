@@ -31,7 +31,7 @@ class _LocalizationSettingCardState extends State<LocalizationSettingCard> {
         setState(() {});
       },
       trailing: Text(
-        LocalizationService.to.getCurrentLanguage.name,
+        LocalizationService.to.language.name,
         style: Get.textTheme.bodySmall,
       ),
     );

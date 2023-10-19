@@ -21,7 +21,7 @@ class _LocalizationDrawerSettingCardState
         FlyDrawerButton(
       title: 'Language'.tr,
       icon: UniconsLine.language,
-      value: LocalizationService.to.getCurrentLanguage.name,
+      value: LocalizationService.to.language.name,
       onTap: () async {
         // show picker
         final String? language = await LocalizationPickerService.show();

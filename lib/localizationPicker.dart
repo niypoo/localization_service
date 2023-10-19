@@ -8,8 +8,8 @@ class LocalizationPickerService {
   static Future<String?> show() async => await ActionSheetHelper.show(
         title: 'Languages'.tr,
         subTitle: 'Change the locale of app to fit your knowledge.'.tr,
-        currentValue: LocalizationService.to.getCurrentLanguage.code,
-        options: LocalizationService.to.languages!
+        currentValue: LocalizationService.to.language.code,
+        options: LocalizationService.to.supportedLanguages
             .map(
               (language) => ActionSheetOption(
                 title: language.name,

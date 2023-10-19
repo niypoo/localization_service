@@ -41,7 +41,7 @@ class _ChangeLocalizationButtonState extends State<ChangeLocalizationButton> {
               children: [
                 const Icon(Icons.arrow_drop_down_rounded),
                 Text(
-                  LocalizationService.to.getCurrentLanguage.name,
+                  LocalizationService.to.language.name,
                   style: Get.textTheme.titleSmall,
                 )
               ],
