@@ -17,7 +17,7 @@ class LocalizationService extends GetxService {
   // current language
   final Rx<Language?> selectedLanguage = Rx(null);
 
-  final LocalizationHandler localizationHandler;
+  final LocalizationServiceHandler localizationHandler;
 
   // constructors
   LocalizationService({
