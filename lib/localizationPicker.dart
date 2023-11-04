@@ -16,6 +16,8 @@ class LocalizationPickerService {
                 value: language.code,
                 leading: FlyImageSVG(
                   path: 'assets/flags/${language.code}.svg',
+                  width: 50,
+                  height: 60,
                 ),
               ),
             )
