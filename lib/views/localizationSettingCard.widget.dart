@@ -17,7 +17,7 @@ class _LocalizationSettingCardState extends State<LocalizationSettingCard> {
   Widget build(BuildContext context) {
     return // Language
         FlySettingCard(
-      title: 'Language'.tr,
+      title: 'LOCALIZATION.Language'.tr,
       onTap: () async {
         // show picker
         final String? language = await LocalizationPickerService.show();

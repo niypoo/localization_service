@@ -19,7 +19,7 @@ class _LocalizationDrawerSettingCardState
   Widget build(BuildContext context) {
     return // Language
         FlyDrawerButton(
-      title: 'Language'.tr,
+      title: 'LOCALIZATION.Language'.tr,
       icon: UniconsLine.language,
       value: LocalizationService.to.language.name,
       onTap: () async {

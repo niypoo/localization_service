@@ -6,8 +6,8 @@ import 'package:localization_service/localization.service.dart';
 
 class LocalizationPickerService {
   static Future<String?> show() async => await ActionSheetHelper.show(
-        title: 'Languages'.tr,
-        subTitle: 'Change the locale of app to fit your knowledge.'.tr,
+        title: 'LOCALIZATION.Languages'.tr,
+        subTitle: 'LOCALIZATION.Change the locale of app to fit your knowledge.'.tr,
         currentValue: LocalizationService.to.language.code,
         options: LocalizationService.to.supportedLanguages
             .map(
